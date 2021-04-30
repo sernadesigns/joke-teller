@@ -24,14 +24,14 @@ function tellMe(joke) {
 async function getJokes() {
 	// Disable Button
 	toggleButton();
-	const apiUrl = 'https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist';
+	const apiUrl = 'https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
 	try {
 		const response = await fetch(apiUrl);
 		const data = await response.json();
 		tellMe(data.setup ? `${data.setup} ... ${data.delivery}` : data.joke);
 	} catch (error) {
 		// Catch Errors Here
-		console.log('whoops', error);
+		tellMe(`Oops, there was an error ... ${error}`)
 	}
 }
 
